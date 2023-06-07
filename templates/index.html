@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        
+        header i {
+            text-align: center;
+            font-size: 17px;
+        }
+
+        header .link-body-emphasis:focus,
+        .link-body-emphasis:hover {
+            color: black !important;
+        }
+
+        header img.nav-logo {
+            width: 120px;
+            height: 80px;
+            padding-right: 20px;
+        }
+        header a.text-white{
+            color: black !important;
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="px-3 py-2 text border-bottom">
+            <div class="containe">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/"
+                        class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                        <img src="{% static '/cloth.jpg' %}" alt="" class="nav-logo">
+                    </a>
+                    <form class="col-12 col-lg mb-2 mb-lg-0 me-lg-auto" role="search">
+                        <input type="search" class="form-control" placeholder="Search for items...." aria-label="Search">
+                    </form>
+                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                        <li>
+                            <a href="#" class="nav-link text-white">
+                                <i class="fa-solid fa-code-compare bi  mx-auto mb-1"></i>
+                                Compare
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white">
+                                <i class="fa-regular fa-heart bi  mx-auto mb-1"></i>
+                                Wishlist
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white">
+                                <i class="fa-solid fa-cart-shopping bi  mx-auto mb-1"></i>
+                                Products
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown text-end">
+                                <a href="#"
+                                    class="link-body-emphasis text-decoration-none dropdown-toggle nav-link text-white"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-regular fa-user bi  mx-auto mb-1"></i>
+                                    Account
+                                </a>
+                                <ul class="dropdown-menu text-small">
+                                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="px-3 py-2 border-bottom mb-3">
+            <div class="container d-flex flex-wrap justify-content-center">
+
+
+                <div class="text-end">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <h1>Hello</h1>
+    <script src="{% static '/min.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+.cracc {
+    justify-content: center;
+    display: flex;
+    font-size: 35px;
+    font-family: Algerian;
+    font-weight: 700;
+}
+
+.errormsg {
+    justify-content: center;
+    display: flex;
+}
+
+.regform {
+    padding: 20px;
+    justify-content: center;
+    display: flex;
+}
+
+.regform .inp input {
+    height: 50px;
+    width: 400px;
+    border-radius: 10px;
+    background-color: #ededed;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    color: black;
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+}
+
+.regform .inp.first input {
+    margin-top: 0 !important;
+}
+
+.regform .inp input::placeholder {
+    color: black;
+}
+
+.regbtn {
+    height: 50px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #004aad;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.regbtn:hover {
+    background-color: rgba(0, 74, 174, 0.9);
+}
+
+.alacc {
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+}
+
+@media screen and (max-width:440px) {
+    .regform .inp input {
+        width: 80vw;
+    }
+}

@@ -1,9 +1,10 @@
 from userauths.views import *
 from django.urls import path
 
-app_name = "userauth"
+app_name = "userauths"
 
 urlpatterns = [
-    path('sign-up/', signup, name="signup"),
+    path('signup/', signup, name="signup"),
     path('login/', login_view, name="login"),
+    path('logout/', logout_view, name="logout")
 ]

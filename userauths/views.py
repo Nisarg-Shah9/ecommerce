@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from userauths.forms import *
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.conf import settings
+from userauths.models import *
 
-User = settings.AUTH_USER_MODEL
+# User = settings.AUTH_USER_MODEL
 
 
 def signup(request):
@@ -30,7 +31,6 @@ def signup(request):
     context = {"form": form}
     return render(request, "userauths/sign-up.html", context)
 
-
 def login_view(request):
     if request.user.is_authenticated:
         return redirect("ecomapp:index")
@@ -40,16 +40,21 @@ def login_view(request):
         password = forms.data["password"]
         try:
             user = User.objects.get(email=email)
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, "You are logged in")
+                return redirect("ecomapp:index")
+            else:
+                messages.warning(request, "You have entered wrong email or password")
         except:
-            messages.error(request, f"User with email {email} does not exist")
-        user = authenticate(request, email=email, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, "You are logged in")
-            return redirect("ecomapp:index")
-        else:
-            messages.error(request, "User does not exist")
+            messages.warning(request, f"User with email {email} does not exist")
     else:
         forms = UserLoginForm()
     context = {"forms":forms}
     return render(request, "userauths/login.html", context)
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, "You are logged out")
+    return redirect("userauths:login")

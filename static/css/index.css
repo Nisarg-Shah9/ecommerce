@@ -1,0 +1,244 @@
+.cont {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    padding-left: calc((2rem)*.5);
+    padding-right: calc((2rem)*.5);
+}
+
+.aside {
+    width: 33%;
+    word-break: break-word;
+    float: left;
+}
+
+.main {
+    width: 66%;
+    float: right;
+}
+
+.main .row {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+    border: 1px solid #dfe2e1;
+    border-radius: 20px;
+    background: #fff;
+    -webkit-transition: 0.2s;
+}
+
+.card:hover {
+    border: 1px solid #00a00d;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, .12);
+    -webkit-transition: 0.2s;
+}
+
+.percentage {
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 900;
+    background: #00a00d;
+    color: #fff;
+    font-family: "Comic Sans MS";
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin: 10px 0 0 10px;
+    z-index: 9999;
+}
+
+.prod-img {
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+.card .prod-img .icons {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: all .3s ease 0s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.prod-img i {
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, .5);
+    color: black;
+    display: inline-flex;
+    font-size: 14px;
+    height: 34px;
+    justify-content: center;
+    line-height: 34px;
+    text-align: center;
+    transition: all .3s ease 0s;
+    vertical-align: middle;
+    width: 34px;
+}
+
+.prod-img i:hover {
+    background-color: #00a00d;
+    color: #fff;
+}
+
+.card:hover .prod-img .icons {
+    visibility: visible;
+    opacity: 1;
+}
+
+.prod-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.prod-det {
+    padding: 20px;
+}
+
+.categ {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Comic Sans MS";
+    color: gray;
+    margin-bottom: -15px;
+    margin-top: -28px;
+}
+
+.sold-by {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Comic Sans MS";
+    color: gray;
+    margin-top: -15px;
+}
+
+.sold-by a {
+    font-weight: 900;
+    color: #00a00d;
+    text-decoration: none;
+}
+
+.prod-det .title a {
+    font-weight: 900;
+    font-family: Oswald;
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.prod-det .title a:hover {
+    color: #00a00d;
+}
+
+.prod-det-bot {
+    overflow: hidden;
+}
+
+.prod-det-bot div {
+    float: left;
+    width: 50%;
+}
+
+.price {
+    font-size: 18px;
+    color: #00a00d;
+    font-weight: 600;
+    font-family: "Comic Sans MS";
+}
+.price small{
+    color: #000;
+}
+
+.price small {
+    font-size: 80%;
+    font-weight: 400;
+    text-decoration: line-through;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.prod-add {
+    text-align: right;
+}
+
+.prod-add a {
+    display: inline-block;
+    margin-left: 5px;
+    color: gray;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.prod-add .add-cart {
+    background-color: #00a00d;
+    color: white;
+    padding: 7px;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    border-radius: 7px;
+    width: max-content;
+}
+
+@media screen and (min-width: 576px) {
+        .cont {
+            max-width: 540px;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .cont {
+            max-width: 720px;
+        }
+    }
+
+    @media screen and (min-width: 992px) {
+        .cont {
+            max-width: 960px;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        .cont {
+            max-width: 1140px;
+        }
+    }
+    @media screen and (min-width: 1400px) {
+        .cont {
+            max-width: 1320px;
+        }
+    }
+@media screen and (max-width: 992px) {
+    .main .row {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .aside {
+        width: 100%;
+    }
+
+    .main {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .main .row {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr;
+    }
+}

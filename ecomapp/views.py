@@ -1,5 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from ecomapp.models import *
 
-# Create your views here.
 def index(request):
-    return render(request, 'mains/index.html')
+    if request.user.is_authenticated:
+        products = Product.objects.all().order_by('-id')
+        context = {'products':products}
+        return render(request, 'mains/index.html', context)
+    else:
+        return redirect("userauths:login")

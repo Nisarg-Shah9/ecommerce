@@ -1,4 +1,83 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Hello</h1>
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<div class="cont">
+    <div class="aside">
+        <h1>Hello</h1>
+    </div>
+    <div class="main">
+        <div class="row">
+            {% for p in products %}
+            <div class="col">
+                <div class="card">
+                    <div class="percentage">-{{ p.get_percentage|floatformat:0 }}%</div>
+                    <div class="prod-img">
+                        <div class="icons">
+                            <a href="#"><i class="fa-solid fa-code-compare"></i></a>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                            <a href="#"><i class="fa-solid fa-eye"></i></a>
+                        </div>
+                        <a href="#">
+                            <img src="{{ p.image.url }}" alt="">
+                        </a>
+                    </div>
+                    <div class="prod-det">
+                        <a href="#"></a>
+                        <p class="categ">{{ p.category }}</p><a href="#"></a>
+                        <h2 class="title"><a href="#">{{ p.title }}</a></h2>
+                        <p class="sold-by">Sold by <a href="#"><span>{{ p.vendor }}</span></a></p>
+                        <div class="prod-det-bot">
+                            <div class="price">&#8377;{{ p.price }}<small>&#8377;{{ p.old_price }}</small></div>
+                            <div class="prod-add">
+                                <a href="#" class="add-cart">
+                                    <i class="fa-solid fa-shopping-cart"></i>
+                                    <span>Add</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% for p in products %}
+            <div class="col">
+                <div class="card">
+                    <div class="percentage">-{{ p.get_percentage|floatformat:0 }}%</div>
+                    <div class="prod-img">
+                        <div class="icons">
+                            <a href="#"><i class="fa-solid fa-code-compare"></i></a>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                            <a href="#"><i class="fa-solid fa-eye"></i></a>
+                        </div>
+                        <a href="#">
+                            <img src="{{ p.image.url }}" alt="">
+                        </a>
+                    </div>
+                    <div class="prod-det">
+                        <a href="#"></a>
+                        <p class="categ">{{ p.category }}</p><a href="#"></a>
+                        <h2 class="title"><a href="#">{{ p.title }}</a></h2>
+                        <p class="sold-by">Sold by <a href="#"><span>{{ p.vendor }}</span></a></p>
+                        <div class="prod-det-bot">
+                            <div class="price">&#8377;{{ p.price }}<small>&#8377;{{ p.old_price }}</small></div>
+                            <div class="prod-add">
+                                <a href="#" class="add-cart">
+                                    <i class="fa-solid fa-shopping-cart"></i>
+                                    <span>Add</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 {% endblock %}

@@ -70,6 +70,7 @@ class Vendor(models.Model):
     address = models.CharField(
         max_length=100, default="Demo apt, demo street, demo city, demo pincode"
     )
+    date = models.DateTimeField(auto_now_add=True, null=True)
     contact = models.CharField(max_length=100, default="+91 1234567890")
     chat_resp_time = models.CharField(max_length=100, default="100")
     shipping_on_time = models.CharField(max_length=100, default="100")
@@ -99,8 +100,8 @@ class Product(models.Model):
     title = models.CharField(max_length=100, default="Pear")
     image = models.ImageField(upload_to=user_directory_path, default="product.jpg")
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
-    vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name="categories")
+    vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True, related_name="vendors")
     price = models.DecimalField(
         max_digits=999999999999, decimal_places=2, default="99.99"
     )

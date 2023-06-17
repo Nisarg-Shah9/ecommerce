@@ -8,17 +8,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+        integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-{{message.tags}}">
-        <strong>{{ message }}</strong>
-    </div>
-    {% endfor %}
-    {% endif %}
+    <header class="desk-head">
+        <div class="cont">
+            <div class="upphead">
+                <div class="logo">
+                    <img src="{% static 'images/food.jpg' %}" alt="">
+                </div>
+                <div class="nav-search">
+                    <form class="search">
+                        <input type="search" placeholder="Search for products....">
+                    </form>
+                    <button class="sub-btn">
+                        <i class="fa-solid fa-search"></i>
+                    </button>
+                </div>
+                <div class="nav-icons">
+                    <li><a href="#"><i class="fa-solid fa-code-compare"></i></a></li>
+                    <li><a href="#"><i class="fa-regular fa-heart"></i></a>
+                        <div class="msg">5</div>
+                    </li>
+                    <li><a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
+                        <div class="msg">5</div>
+                    </li>
+                    <li class="dropdown"><a href="#"><i class="fa-regular fa-user dropdown-icon"></i>
+                            <ul class="dropdown-cont">
+                                <li><a href="#" class="dropdown-item"><i class="fa-regular fa-user"></i>My Account</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item"><i class="fa-solid fa-location"></i>Order
+                                        Tracking</a></li>
+                                <li><a href="#" class="dropdown-item"><i class="fa-regular fa-heart"></i>My Wishlist</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item"><i class="fa-solid fa-sliders"></i>Settings</a>
+                                </li>
+                                <hr>
+                                {%  if user.is_authenticated %}
+                                <li><a href="{% url 'userauths:logout' %}" class="dropdown-item"><i
+                                            class="fa-solid fa-arrow-right-from-bracket signout"></i>Sign Out</a>
+                                        </li>
+                                    {% else %}
+                                <li><a href="{% url 'userauths:login' %}" class="dropdown-item"><i
+                                            class="fa-solid fa-arrow-right-to-bracket signin"></i>Sign In</a>
+                                        </li>
+                                <li><a href="{% url 'userauths:signup' %}" class="dropdown-item"><i
+                                            class="fa-solid fa-arrow-right-to-bracket signup"></i>Register</a>
+                                        </li>
+                                        {% endif %}
+                            </ul>
+                        </a></li>
+                </div>
+            </div>
+            <div class="downhead">
+                <div class="browsecat dropdown">
+                    <a href="{% url 'ecomapp:category' %}">
+                    <button class="browsecat-btn">
+                        <i class="bi bi-grid"></i>
+                        <span>Browse All Categories</span>
+                    </button>
+                </a>
+                <ul class="dropdown-cont">
+                    {% for c in categories %}
+                    <li><a href="{% url 'ecomapp:catprod' c.cid %}" class="dropdown-item">{{ c.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                </div>
+                <div class="nav-menu">
+                    <nav class="navv">
+                        <ul class="nav-ul">
+                            <li><a href="{% url 'ecomapp:index' %}" class="nav-item">Home</a></li>
+                            <li class="dropdown"><a href="#" class="nav-item">Shop</a>
+                                <ul class="dropdown-cont">
+                                    <li><a href="#" class="dropdown-item">My Account</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#" class="nav-item">Vendors</a>
+                                <ul class="dropdown-cont">
+                                    <li><a href="#" class="dropdown-item">My Account</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown mega"><a href="#" class="nav-item">Mega Menu</a>
+                                <div class="dropdown-cont">
+                                    <ul>
+                                        <li class="dropdown-item green">Dairy</li>
+                                        <li><a href="#" class="dropdown-item">Item1</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="dropdown-item green">Vegetables</li>
+                                        <li><a href="#" class="dropdown-item">Item1</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li class="dropdown-item green">Deserts</li>
+                                        <li><a href="#" class="dropdown-item">Item1</a></li>
+                                    </ul>
+                                </div>
+                            <li class="dropdown"><a href="#" class="nav-item">Blog</a>
+                                <ul class="dropdown-cont">
+                                    <li><a href="#" class="dropdown-item">My Account</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#" class="nav-item">Pages</a>
+                                <ul class="dropdown-cont">
+                                    <li><a href="#" class="dropdown-item">My Account</a></li>
+                                </ul>
+                            </li>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="phone">
+                    <div class="number">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>1900-4545</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="downhr">
+    </header>
+
+    <header class="mobhead">
+        <div class="cont">
+        <div class="mobmainhead">
+            <div class="logo">
+                <img src="{% static 'images/food.jpg' %}" alt="">
+            </div>
+            <div class="nav-icons">
+                <li><a href="#"><i class="fa-solid fa-code-compare"></i></a></li>
+                <li><a href="#"><i class="fa-regular fa-heart"></i></a>
+                    <div class="msg">5</div>
+                </li>
+                <li><a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
+                    <div class="msg">5</div>
+                </li>
+                <li><a href="#" onclick="openNav()"><i class="fa-solid fa-bars menuopen"></i>
+                    </a></li>
+            </div>
+        </div>
+        </div>
+        <hr>
+        <div class="mobsidehead" id="mobsidehead">
+            <a href="javascript:void(0)" class="closeside" onclick="closeNav()">&times;</a>
+            
+            <div class="nav-search">
+                <form class="search">
+                    <input type="search" placeholder="Search for products....">
+                </form>
+                <button class="sub-btn">
+                    <i class="fa-solid fa-search"></i>
+                </button>
+            </div>
+            <div class="nav-menu">
+                <nav class="navv">
+                    <ul class="nav-ul">
+                        <li><a href="#" class="nav-item mobheadnavitem">Home</a></li>
+                        <li class="dropdown" onclick="opm1()" id="m1"><a href=" #" class="nav-item">Shop</a>
+                        </li>
+                        <div class="dropdown-cont">
+                            <li><a href="#" class="dropdown-item">My Account</a></li>
+                        </div>
+                        <li class="dropdown" onclick="opm2()" id="m2"><a href="#" class="nav-item">Vendors</a>
+                        </li>
+                        <div class="dropdown-cont">
+                            <li><a href="#" class="dropdown-item">My Account</a></li>
+                        </div>
+                        <li class="dropdown mega" onclick="opm3()" id="m3"><a href="#" class="nav-item">Mega Menu</a>
+                        </li>
+                        <div class="dropdown-cont">
+                            <li class="dropdown-item green">Dairy</li>
+                            <li><a href="#" class="dropdown-item">Item1</a></li>
+                            <li class="dropdown-item green">Vegetables</li>
+                            <li><a href="#" class="dropdown-item">Item1</a></li>
+                            <li class="dropdown-item green">Deserts</li>
+                            <li><a href="#" class="dropdown-item">Item1</a></li>
+                        </div>
+                        <li class="dropdown" onclick="opm4()" id="m4"><a href="#" class="nav-item">Blog</a>
+                        </li>
+                        <div class="dropdown-cont">
+                            <li><a href="#" class="dropdown-item">My Account</a></li>
+                        </div>
+                        <li class="dropdown" onclick="opm5()" id="m5"><a href="#" class="nav-item">Pages</a>
+                        </li>
+                        <div class="dropdown-cont">
+                            <li><a href="#" class="dropdown-item">My Account</a></li>
+                        </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
     {% block content %}
     {% endblock %}
     <script>
@@ -30,6 +218,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
         integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 
 </html>

@@ -1,123 +1,524 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
-.upphead .nav-link i {
-    text-align: center;
-    font-size: 17px;
+a{
+    text-decoration: none;
 }
-
-.upphead .dropdown-menu {
-    font-size: 15px;
-}
-
-.upphead .dropdown-menu li a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.dropdown-menu li a:focus {
-    background: none;
-}
-
-.downhead nav {
-    height: 70px;
-    background-color: white !important;
-}
-
-.downhead nav ul {
-    background-color: white;
-}
-.downhead nav ul li a, .downhead nav ul li a:hover{
-    color: black;
-    font-size: 17px;
-    font-family: "Comic Sans MS";
-}
-
-.downhead .container-fluid {
-    background-color: white;
-}
-
-.downhead .navbtn {
-    background-color: white;
-    height: 70px;
-}
-
-.downhead .call {
-    font-size: 25px;
+.cont {
+    margin-right: auto;
     margin-left: auto;
-    font-family: "Comic Sans MS";
-    justify-content: center;
+    width: 100%;
+    padding-left: calc((2rem)*.5);
+    padding-right: calc((2rem)*.5);
+}
+header li {
+    list-style: none;
 }
 
-.downhead .call p {
-    font-size: 10px;
-    text-align: right;
-}
-.downhead .call i {
-    font-size: 35px;
+.upphead {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
 }
 
-.downhead .call span {
-    font-weight: 900;
-    color: green;
-}
-
-header .link-body-emphasis:focus,
-.link-body-emphasis:hover {
-    color: black !important;
-}
-
-header img.nav-logo {
+.upphead .logo img {
     width: 140px;
-    height: 80px;
-    padding-right: 20px;
+    height: auto;
 }
 
-header a.text-white {
-    color: black !important;
-    font-weight: 400;
-}
-
-.downhead .dropdown {
+.upphead .nav-search {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.browsecat {
-    background-color: darkgreen;
-    color: white;
-    font-size: 17px;
+.upphead .nav-search button {
+    height: 40px;
+    border: 1px solid #ededed;
+    padding-right: 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    border-left: none;
+    background-color: white;
+    font-size: 15px;
+}
+
+.upphead .search {
+    width: 100%;
+}
+
+.upphead .search input,
+.upphead .search input:focus {
+    width: 100%;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #ededed;
+    outline: none;
+    padding: 0 20px;
+    border-right: none;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+}
+
+.upphead .nav-icons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.upphead .nav-icons i {
+    padding: 10px;
+    font-size: 20px;
+    color: #000;
+}
+.upphead .nav-icons li{
+    position: relative;
+}
+.upphead .nav-icons .msg{
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #00a00d;
+    color: #fff;
+    font-family: "Comic Sans MS";
+    border-radius: 50px;
+    padding: 5px;
+    transform: translate(-100%, -10%);
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upphead .nav-icons .dropdown {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.upphead .nav-icons .dropdown .dropdown-icon::after {
+    content: "\f107";
+    font-family: "FontAwesome";
+    font-size: 13px;
+}
+
+.upphead .nav-icons .dropdown-cont {
+    visibility: hidden;
+    position: absolute;
+    background-color: #fff;
+    min-width: 230px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 99999999;
+    transition: all .3s ease-in;
+    border: 1px solid #ededed;
+    border-radius: 20px;
+    padding: 5px 5px;
+    left: -110px;
+    top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.upphead .nav-icons .dropdown-cont .dropdown-item {
+    display: flex;
+    white-space: nowrap;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    border-radius: 10px;
+    align-items: center;
+    line-height: 26px;
+    text-decoration: none;
+    color: #000;
+}
+
+.upphead .nav-icons .dropdown-cont .dropdown-item:hover {
+    background-color: #ededed;
+}
+
+.upphead .nav-icons .dropdown:hover .dropdown-cont {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.upphead .nav-icons .dropdown .dropdown-cont .signout {
+    rotate: 180deg;
+}
+
+.downhead {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr 1fr;
+}
+
+.downhead .browsecat {
+    justify-content: left;
+    align-items: center;
+    display: flex;
+}
+
+.downhead .browsecat .browsecat-btn {
+    background-color: #00a00d;
+    color: #fff;
+    padding: 10px;
+    font-size: 15px;
     font-family: "Comic Sans MS";
     border: none;
     outline: none;
     border-radius: 10px;
-    height: 50px;
-    margin-right: 30px;
-    padding: 0 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.downhead .browsecat .browsecat-btn:hover{
+    background-color: #099301;
 }
 
-.browsecat:hover,
-.browsecat:focus {
-    background-color: green;
+.downhead .browsecat .browsecat-btn::after {
+    content: "\f107";
+    font-family: "FontAwesome";
 }
 
-.browsecat.btn-secondary {
-    --bs-btn-active-bg: green !important;
+.downhead .browsecat.dropdown {
+    position: relative;
 }
 
-.searchbtn {
-    border-radius: 10px 0 0 10px;
+.downhead .browsecat.dropdown .dropdown-cont {
+    visibility: hidden;
+    position: absolute;
+    background-color: #fff;
+    min-width: 230px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 99999999;
+    transition: all .3s ease-in;
+    border: 1px solid #ededed;
+    border-radius: 20px;
+    padding: 5px 5px;
+    top: 30px;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.searchinp {
-    border-radius: 0 10px 10px 0;
+.downhead .browsecat.dropdown .dropdown-cont .dropdown-item {
+    display: flex;
+    white-space: nowrap;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    border-radius: 10px;
+    align-items: center;
+    line-height: 26px;
+    text-decoration: none;
+    color: #000;
+    padding: 5px;
 }
 
-.fa-arrow-right-from-bracket{
-    rotate: 180deg;
+.downhead .browsecat.dropdown .dropdown-cont .dropdown-item:hover {
+    background-color: #ededed;
 }
 
-@media screen and (max-width: 380px) {
-    .upphead span {
+.downhead .browsecat.dropdown:hover .dropdown-cont {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.downhead .nav-menu {
+    justify-content: start;
+    align-items: center;
+    display: flex;
+}
+
+.downhead .nav-menu .navv .nav-ul {
+    display: flex;
+    column-gap: 10px;
+}
+
+.downhead .nav-menu .navv .nav-item {
+    color: #000;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    padding: 5px;
+}
+
+.downhead .nav-menu .navv .dropdown .nav-item::after {
+    content: " \f107";
+    font-family: "FontAwesome";
+}
+
+.downhead .nav-menu .navv .dropdown {
+    position: relative;
+}
+
+.downhead .nav-menu .dropdown-cont {
+    visibility: hidden;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 99999999;
+    transition: all .3s ease-in;
+    border: 1px solid #ededed;
+    border-radius: 20px;
+    padding: 5px 5px;
+    top: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.downhead .nav-menu .dropdown-cont .dropdown-item {
+    display: flex;
+    white-space: nowrap;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    border-radius: 10px;
+    align-items: center;
+    line-height: 26px;
+    text-decoration: none;
+    color: #000;
+    padding: 5px;
+}
+
+.downhead .nav-menu .dropdown-cont .dropdown-item:hover {
+    background-color: #ededed;
+}
+
+.downhead .nav-menu .navv .dropdown:hover .dropdown-cont {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.downhead .nav-menu .navv .dropdown.mega {
+    position: static;
+}
+
+.downhead .nav-menu .navv .dropdown.mega .dropdown-cont {
+    max-width: 1320px;
+    left: 0;
+    right: 0;
+    margin: 1.25rem auto;
+    top: 120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.downhead .nav-menu .navv .dropdown.mega .dropdown-cont .dropdown-item.green,
+.downhead .nav-menu .navv .dropdown.mega .dropdown-cont .dropdown-item.green:hover {
+    color: #00a00d;
+    background-color: #fff;
+    font-weight: 900;
+}
+
+.downhr {
+    width: 100%;
+}
+.phone{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 25px;
+}
+.phone span{
+    color: #00a00d;
+    font-size: 25px;
+    font-family: "Comic Sans MS";
+    font-weight: 900;
+}
+.phone span p{
+    color: #000;
+    font-size: 10px;
+    font-weight: 400;
+}
+.mobmainhead{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.mobmainhead .nav-icons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.mobmainhead .nav-icons i {
+    padding: 10px;
+    font-size: 20px;
+    color: #000;
+}
+.mobmainhead .nav-icons .menuopen{
+    color: #00a00d;
+}
+.mobmainhead .nav-icons li{
+    position: relative;
+}
+.mobmainhead .nav-icons .msg{
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: #00a00d;
+    color: #fff;
+    font-family: "Comic Sans MS";
+    border-radius: 50px;
+    padding: 5px;
+    transform: translate(-100%, -10%);
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mobmainhead .logo img {
+    width: 140px;
+    height: auto;
+}
+.mobsidehead .nav-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.mobsidehead .nav-search button {
+    height: 40px;
+    border: 1px solid #ededed;
+    padding-right: 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    border-left: none;
+    background-color: white;
+    font-size: 15px;
+}
+
+.mobsidehead .search {
+    width: 100%;
+}
+
+.mobsidehead .search input,
+.mobsidehead .search input:focus {
+    width: 100%;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #ededed;
+    outline: none;
+    padding: 0 20px;
+    border-right: none;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+}
+.mobsidehead{
+    background-color: #fff;
+    height: 100%;
+    width: 450px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #ededed;
+    padding: 30px 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+    transform: translateX(-100%);
+    z-index: 999999999999999999999;
+}
+.mobsidehead .closeside{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
+    text-decoration: none;
+    color: #00a00d;
+    font-weight: 900;
+}
+.mobsidehead .nav-menu .navv .nav-ul{
+    padding: 0;
+}
+.mobsidehead .nav-menu .navv li{
+    padding: 5px;
+    border-bottom: 1px solid #ededed;
+}
+.mobsidehead .nav-menu .navv .dropdown-cont li{
+    border: none !important;
+}
+.mobsidehead .nav-menu .navv .nav-item {
+    color: #000;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    line-height: 26px;
+}
+
+.mobsidehead .nav-menu .navv .dropdown::after {
+    content: " \f107";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 10px;
+}
+.mobsidehead .nav-menu .navv .dropdown-cont{
+    display: none;
+    background-color: #fff;
+    transition: all .3s ease-in;
+    border: 1px solid #ededed;
+    border-radius: 20px;
+    padding: 5px 5px;
+}
+.mobsidehead .nav-menu .navv .dropdown-cont .dropdown-item{
+    display: flex;
+    white-space: nowrap;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    border-radius: 10px;
+    align-items: center;
+    line-height: 18px;
+    text-decoration: none;
+    color: #000;
+    padding: 5px;
+}
+.show{
+    display: block !important;
+}
+
+@media screen and (min-width: 576px) {
+    .cont {
+        max-width: 540px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .cont {
+        max-width: 720px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cont {
+        max-width: 960px;
+    }
+    .mobhead{
         display: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cont {
+        max-width: 1140px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .cont {
+        max-width: 1320px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .desk-head{
+        display: none;
+    }
+}
+@media screen and (max-width:450px) {
+    .mobsidehead{
+        width: 100%;
     }
 }

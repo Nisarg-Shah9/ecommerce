@@ -1,0 +1,81 @@
+.main {
+    width: 100%;
+}
+.vendors{
+    font-size: 30px;
+    font-family: Oswald;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+.main .row {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.card {
+    border: 1px solid #dfe2e1;
+    border-radius: 20px;
+    background: #fff;
+    -webkit-transition: 0.2s;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 240px;
+}
+
+.vend-img {
+    padding: 20px;
+}
+.vend-img img {
+    width: 100%;
+    height: 100%;
+    transition: all .3s ease-in-out;
+}
+.vend-img img:hover{
+    transform: scale(1.1);
+}
+.vend-det{
+    padding-left: 10px;
+}
+.vend-det .title a {
+    font-weight: 900;
+    font-family: Oswald;
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.vend-det .title a:hover {
+    color: #00a00d;
+}
+.vend-det .prods{
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    color: gray;
+}
+.vend-det .visit .visstore{
+    background-color: #00a00d;
+    color: white;
+    padding: 7px;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    border-radius: 7px;
+    width: max-content;
+}
+@media screen and (max-width: 992px) {
+    .main .row {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .main .row {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr;
+    }
+}

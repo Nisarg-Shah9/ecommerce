@@ -1,0 +1,98 @@
+.aside {
+    width: 33%;
+    word-break: break-word;
+    float: left;
+}
+
+.main {
+    width: 66%;
+    float: right;
+}
+.categories{
+    font-size: 30px;
+    font-family: Oswald;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+.main .row {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+    border: 1px solid #dfe2e1;
+    border-radius: 20px;
+    background: #fff;
+    -webkit-transition: 0.2s;
+}
+
+.card:hover {
+    border: 1px solid #00a00d;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, .12);
+    -webkit-transition: 0.2s;
+}
+.categ-img {
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+.categ-img img {
+    max-width: 100%;
+    max-height: 100%;
+    border-bottom: 1px solid #ededed;
+    transition: all .3s ease-in-out;
+}
+.categ-img img:hover{
+    transform: scale(1.1);
+}
+.categ-det{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    text-align: center;
+}
+.categ-det .title a {
+    font-weight: 900;
+    font-family: Oswald;
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.categ-det .title a:hover {
+    color: #00a00d;
+}
+.categ-det .prods{
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+    color: gray;
+    margin-top: -15px;
+}
+@media screen and (max-width: 992px) {
+    .main .row {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .aside {
+        width: 100%;
+    }
+
+    .main {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .main .row {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr;
+    }
+}

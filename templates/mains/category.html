@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static 'css/category.css' %}">
+
+<div class="cont">
+    <div class="aside">
+        <h1>Hello</h1>
+    </div>
+    <div class="main">
+        <div class="categories">
+            {{ categories.count }} Category
+        </div>
+        <div class="row">
+            {% for c in categories %}
+            <div class="col">
+                <div class="card">
+                    <div class="categ-img">
+                        <a href="{% url 'ecomapp:catprod' c.cid %}">
+                            <img src="{{ c.image.url }}" alt="">
+                        </a>
+                    </div>
+                    <div class="categ-det">
+                        <a href="#"></a>
+                        <h2 class="title"><a href="{% url 'ecomapp:catprod' c.cid %}">{{ c.title }}</a></h2>
+                        <p class="prods">{{ c.categories.count }} Product{{ c.categories.count|pluralize }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -5,32 +5,15 @@
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
-
+<style>
+    .main{
+        width: 100%;
+    }
+    .main .row{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+</style>
 <div class="cont">
-    <div class="aside">
-        <div class="categ">
-            <h2 class="cat">Categories</h2>
-            {% for c in categories %}
-            <div class="siderow">
-            <div class="side-det">
-                <input type="checkbox" id="{{ c.title }}" class="categinp">
-                <label for="{{ c.title }}">{{ c.title }}</label>
-            </div>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="categ">
-            <h2 class="cat">Vendors</h2>
-            {% for v in vendors %}
-            <div class="siderow">
-            <div class="side-det">
-                <input type="checkbox" id="{{ v.title }}" class="categinp">
-                <label for="{{ v.title }}">{{ v.title }}</label>
-            </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
     <div class="main">
         <div class="row">
             {% for p in products %}
@@ -68,5 +51,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

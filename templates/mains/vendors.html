@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static 'css/vendors.css' %}">
+
+<div class="cont">
+    <div class="main">
+        <div class="vendors">
+            {{ vendors.count }} Vendors
+        </div>
+        <div class="row">
+            {% for v in vendors %}
+            <div class="col">
+                <div class="card">
+                    <div class="vend-img">
+                        <a href="#">
+                            <img src="{{ v.image.url }}" alt="">
+                        </a>
+                    </div>
+                    <div class="vend-det">
+                        <a href="#"></a>
+                        <p class="prods">Since {{ v.date|date:"Y" }}</p>
+                        <h2 class="title"><a href="#">{{ v.title }}</a></h2>
+                        <p class="prods">Address: {{ v.address }}</p>
+                        <p class="prods">Call Us: {{ v.contact }}</p>
+                        <div class="visit">
+                            <a href="#" class="visstore">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Visit Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

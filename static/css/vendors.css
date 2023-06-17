@@ -20,7 +20,7 @@
     -webkit-transition: 0.2s;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    height: 24px;
+    height: 240px;
 }
 
 .vend-img {

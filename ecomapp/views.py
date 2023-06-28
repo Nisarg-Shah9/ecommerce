@@ -33,6 +33,24 @@ def vendor(request):
         return render(request, 'mains/vendors.html', context)
     else:
         return redirect("userauths:login")
+def vendprod(request, vid):
+    if request.user.is_authenticated:
+        vendor = Vendor.objects.get(vid=vid)
+        products = Product.objects.filter(product_status="published", vendor=vendor)
+        context = {'vendor' : vendor, 'products' : products}
+        return render(request, 'mains/vendprod.html', context)
+    else:
+        return redirect("userauths:login")
+def proddet(request, pid):
+    if request.user.is_authenticated:
+        product = Product.objects.get(pid=pid)
+        p_images = product.p_images.all()
+        ws = product.ws.all()
+        rel_prods = Product.objects.filter(category=product.category).exclude(pid=pid)
+        context = {'p' : product, 'p_images' : p_images, 'ws' : ws, 'rel_prods' : rel_prods}
+        return render(request, 'mains/proddet.html', context)
+    else:
+        return redirect("userauths:login")
 def shop(request):
     if request.user.is_authenticated:
         products = Product.objects.filter(product_status="published")

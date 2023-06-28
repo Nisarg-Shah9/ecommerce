@@ -1,0 +1,91 @@
+.main {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.main .row {
+    grid-template-columns: 1fr;
+}
+
+.main .prodcount {
+    margin-top: 0;
+    font-family: Oswald;
+
+}
+
+.main .row .col .card {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.main .row .col .categ {
+    margin-top: 0;
+}
+
+.main .row .col .categ.desc {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.main .row .col .prod-img {
+    width: 240px;
+    height: auto;
+}
+
+.main .row .col .prod-img img {
+    border: none;
+}
+
+.main .row .col .prod-det-bot .prod-add {
+    float: none;
+    margin-top: 30px;
+}
+
+.main .row .col .prod-det-bot .prod-add .add-cart {
+    display: block;
+    height: max-content;
+}
+
+.upper .cover-img {
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+.upper .cover-img .coverimg {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    filter: brightness(0.2);
+}
+
+.upper .prof-img {
+    position: absolute;
+    top: 85px;
+    left: 60px;
+}
+
+.upper .prof-img img {
+    width: 130px;
+    height: 130px;
+}
+
+.upper .vend-det {
+    position: absolute;
+    top: 35px;
+    left: 210px;
+    color: #fff;
+    font-family: "Comic Sans MS";
+}
+
+.upper .vend-det .adddesccont {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    margin-top: -20px;
+    font-size: 15px;
+}
+
+.upper .vend-det .title {
+    font-family: Oswald;
+}

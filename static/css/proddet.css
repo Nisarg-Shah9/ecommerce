@@ -1,0 +1,422 @@
+.smallimgs {
+    display: flex;
+    column-gap: 10px;
+    width: 500px;
+    overflow-x: scroll;
+    margin-top: 20px;
+}
+
+.main-img {
+    display: none;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid #dfe2e1;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-img img {
+    cursor: zoom-in;
+    transition: transform 0.2s ease-out;
+    width: 100%;
+    height: 100%;
+}
+
+.smallimgs img {
+    border-radius: 20px;
+    border: 1px solid #dfe2e1;
+}
+
+.smallimgs img.active {
+    border: 1px solid #00a00d;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, .2);
+}
+
+.prodsing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.prod-det .categ .cat {
+    font-family: "Comic Sans MS";
+    color: #00a00d;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.prod-det .title h2 {
+    font-family: Oswald;
+    font-size: 40px;
+    margin: 0;
+}
+
+.prod-det .rating {
+    color: #d9c21d;
+    font-size: 20px
+}
+
+.prod-det .rating .reviews {
+    color: #00a00d;
+    font-family: "Comic Sans MS";
+    font-size: 17px;
+}
+
+.prod-det .priceper .price {
+    font-size: 25px;
+    color: #00a00d;
+    font-family: "Comic Sans MS";
+    font-weight: 900;
+}
+
+.prod-det .priceper .oldprice {
+    color: rgb(92, 108, 117, .75);
+    text-decoration: line-through;
+    font-size: 20px;
+}
+
+.prod-det .priceper .per {
+    display: inline;
+    color: #fff;
+    font-family: "Comic Sans MS";
+    background-color: #00a00d;
+    border-radius: 20px;
+    padding: 5px 12px;
+}
+
+.prod-det .weight .weigh {
+    font-size: 15px;
+    font-family: "Comic Sans MS";
+}
+
+.prod-det .weight .weights button {
+    background-color: #fff;
+    font-size: 18px;
+    font-family: "Comic Sans MS";
+    border: 1px solid rgb(92, 108, 117, .75);
+    padding: 5px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: #000;
+    transition: 0.3s;
+}
+
+.prod-det .weight .weights button:hover {
+    color: #fff;
+    background-color: #00a00d;
+}
+
+.qty::-webkit-outer-spin-button,
+.qty::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.prod-det .quantity {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.prod-det .quantity .qty {
+    text-align: center;
+    font-size: 15px;
+    height: 25px;
+    border: 1px solid rgb(92, 108, 117);
+    border-left: 0;
+    border-right: 0;
+    width: 50px;
+}
+
+.prod-det .quantity .qty:focus {
+    outline: none;
+}
+
+.prod-det .quantity input[type="button"] {
+    height: 29px;
+    background-color: #fff;
+    border: 1px solid rgb(92, 108, 117);
+    width: 29px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.prod-det .quantity input[type="button"]:hover {
+    background-color: #dfe2e1;
+}
+
+.prod-det .quantity .qtyplus {
+    border-radius: 0 5px 5px 0;
+    font-size: 18px;
+}
+
+.prod-det .quantity .qtyminus {
+    font-size: 18px;
+    border-radius: 5px 0 0 5px;
+}
+
+.prod-det .prodadd .addbtns {
+    display: flex;
+    column-gap: 10px;
+}
+
+.prod-det .prodadd .addcart {
+    background-color: #00a00d;
+    color: #fff;
+    font-size: 18px;
+    font-family: "Comic Sans MS";
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 50px;
+}
+
+.prod-det .prodadd .addcart:hover {
+    background-color: #099301;
+}
+
+.prod-det .prodadd .addwish,
+.prod-det .prodadd .comp {
+    background-color: #dfe2e1;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    font-size: 18px;
+    transition: .3s;
+}
+
+.prod-det .prodadd .addwish:hover,
+.prod-det .prodadd .comp:hover {
+    background-color: rgb(92, 108, 117, .6);
+}
+
+.prod-det hr {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.prodmore {
+    margin-top: 40px;
+    display: flex;
+    column-gap: 20px;
+}
+
+.prodmore .main {
+    width: 70%;
+    float: left;
+}
+
+.prodmore .aside {
+    width: 30%;
+    float: right;
+}
+
+.prodmore .aside .box {
+    background: #dfe2e1;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+.prodmore .aside .box .delivery,
+.prodmore .aside .box .retwar {
+    font-size: 15px;
+    font-family: 'Comic Sans MS';
+}
+
+.prodmore .aside .box .delivery .deliver,
+.prodmore .aside .box .retwar .retuwarr {
+    font-family: 'OSWALD';
+    font-size: 20px;
+}
+
+.prodmore .aside .box .veraddchange .ver {
+    color: green;
+    font-weight: 900;
+}
+
+.prodmore .aside .box .veraddchange .unver {
+    color: red;
+    font-weight: 900;
+}
+
+.prodmore .aside .box .veraddchange .change {
+    float: right;
+}
+
+.prodmore .aside .box .veraddchange .change a {
+    color: #004aad;
+}
+
+.prodmore .aside .box hr {
+    width: 100%;
+    margin: 10px;
+}
+
+.prodmore .aside .box2 {
+    margin-top: 20px;
+}
+
+.prodmore .aside .box .vendor {
+    font-family: 'Comic Sans MS';
+    font-size: 15px;
+}
+
+.prodmore .aside .box .vendor .vend {
+    font-family: 'Oswald';
+    font-size: 20px;
+}
+
+.prodmore .aside .box .vendor .vendors,
+.prodmore .aside .box .vendor .vendors a {
+    color: #00a00d;
+    font-family: 'Oswald';
+    margin: auto;
+}
+
+.prodmore .aside .box .vendor .rating {
+    color: #d9c21d;
+}
+
+.prodmore .aside .box .vendor .rating .reviews {
+    color: #000;
+}
+
+.prodmore .aside .box .vendor .venddet {
+    display: flex;
+    column-gap: 15px;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.prodmore .aside .box .vendor .venddet .head {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.prodmore .aside .box .vendor .venddet .per {
+    text-align: center;
+}
+
+.prodmore .main {
+    border: 1px solid #dfe2e1;
+    border-radius: 20px;
+    height: 100%;
+    padding-bottom: 20px;
+}
+
+.prodmore .main .navs .produl {
+    display: flex;
+    column-gap: 20px;
+}
+
+.prodmore .main .navs .produl .proditem {
+    list-style: none;
+    border: 1px solid #00a00d;
+    color: #00a00d;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    font-size: 15px;
+    font-family: 'Comic Sans MS';
+}
+
+.prodmore .main .produl .proditem:hover {
+    background-color: #dfe2e1;
+}
+
+#speccont,
+#revcont,
+#vendcont {
+    display: none;
+}
+
+#spec,
+#rev,
+#vend {
+    border: 1px solid #dfe2e1;
+    color: #000;
+}
+
+.prodmore .main .content {
+    padding: 0 50px;
+}
+
+.prodmore .main .vendor {
+    font-family: 'Comic Sans MS';
+    font-size: 18px;
+}
+
+.prodmore .main .vendor .vendors,
+.prodmore .main .vendor .vendors a {
+    color: #00a00d;
+    font-family: 'Oswald';
+    margin: auto;
+    font-size: 25px;
+}
+
+.prodmore .main .vendor .rating {
+    color: #d9c21d;
+}
+
+.prodmore .main .vendor .rating .reviews {
+    color: #000;
+}
+
+.prodmore .main .vendor .venddet {
+    display: flex;
+    column-gap: 25px;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.prodmore .main .vendor .venddet .head {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.prodmore .main .vendor .venddet .per {
+    text-align: center;
+}
+
+.rel_prods {
+    margin-top: 40px;
+}
+
+.rel_prods .relprod {
+    font-size: 25px;
+    font-family: 'Oswald';
+}
+
+#desccont h1,
+#desccont h2,
+#desccont h3,
+#desccont h4,
+#desccont h5,
+#desccont h6 {
+    font-family: 'Oswald' !important;
+}
+
+#desccont p {
+    font-family: 'Comic Sans MS' !important;
+}
+
+#speccont tbody tr:nth-child(even) {
+    background-color: #dfe2e1;
+    font-family: 'Comic Sans MS';
+}
+
+#speccont tbody tr:nth-child(odd) {
+    background-color: #ededed;
+    font-family: 'Comic Sans MS';
+}
+
+#speccont tbody tr td {
+    padding: 0px 10px;
+    height: 40px;
+}

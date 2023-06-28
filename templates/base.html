@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/prism.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
@@ -69,7 +70,7 @@
             </div>
             <div class="downhead">
                 <div class="browsecat dropdown">
-                    <a href="{% url 'ecomapp:category' %}">
+                    <a href="javascript:void(0)">
                     <button class="browsecat-btn">
                         <i class="bi bi-grid"></i>
                         <span>Browse All Categories</span>
@@ -79,20 +80,23 @@
                     {% for c in categories %}
                     <li><a href="{% url 'ecomapp:catprod' c.cid %}" class="dropdown-item">{{ c.title }}</a></li>
                     {% endfor %}
+                    <hr>
+                    <li><a href="{% url 'ecomapp:category' %}" class="dropdown-item">All Categories</a></li>
                 </ul>
                 </div>
                 <div class="nav-menu">
                     <nav class="navv">
                         <ul class="nav-ul">
                             <li><a href="{% url 'ecomapp:index' %}" class="nav-item">Home</a></li>
-                            <li class="dropdown"><a href="#" class="nav-item">Shop</a>
-                                <ul class="dropdown-cont">
-                                    <li><a href="#" class="dropdown-item">My Account</a></li>
-                                </ul>
+                            <li><a href="{% url 'ecomapp:shop' %}" class="nav-item">Shop</a>
                             </li>
                             <li class="dropdown"><a href="#" class="nav-item">Vendors</a>
                                 <ul class="dropdown-cont">
-                                    <li><a href="#" class="dropdown-item">My Account</a></li>
+                                    {% for v in vendors %}
+                    <li><a href="{% url 'ecomapp:vendprod' v.vid %}" class="dropdown-item">{{ v.title }}</a></li>
+                    {% endfor %}
+                    <hr>
+                    <li><a href="{% url 'ecomapp:vendor' %}" class="dropdown-item">All Vendors</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown mega"><a href="#" class="nav-item">Mega Menu</a>
@@ -220,6 +224,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/prism.js' %}"></script>
 </body>
 
 </html>

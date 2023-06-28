@@ -3,6 +3,8 @@ from shortuuid.django_fields import ShortUUIDField
 from django.utils.html import mark_safe
 from userauths.models import *
 from unicodedata import decimal
+from taggit.managers import TaggableManager
+from tinymce.models import HTMLField
 
 STATUS_CHOICE = (
     ("process", "Processing"),
@@ -61,12 +63,13 @@ class Vendor(models.Model):
         unique=True,
         length=10,
         max_length=20,
-        prefix="cat",
+        prefix="ven",
         alphabet="abcdefghijklmnopqrstuvwxyz12345",
     )
     title = models.CharField(max_length=100, default="Nisarg")
     image = models.ImageField(upload_to=user_directory_path, default="vendor.jpg")
-    description = models.TextField(null=True, blank=True, default="I am a vendor")
+    cover_image = models.ImageField(upload_to=user_directory_path, default="vendor.jpg")
+    description = HTMLField(null=True, blank=True, default="I am a vendor")
     address = models.CharField(
         max_length=100, default="Demo apt, demo street, demo city, demo pincode"
     )
@@ -108,7 +111,7 @@ class Product(models.Model):
     old_price = models.DecimalField(
         max_digits=999999999999, decimal_places=2, default="199.99"
     )
-    # tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
+    tags = TaggableManager(blank=True)
     product_status = models.CharField(
         choices=STATUS, max_length=20, default="in_review"
     )
@@ -121,8 +124,8 @@ class Product(models.Model):
     )
     date = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(null=True, blank=True)
-    description = models.TextField(null=True, blank=True, default="I am a product")
-    specifications = models.TextField(null=True, blank=True)
+    description = HTMLField(null=True, blank=True, default="I am a product")
+    specifications = HTMLField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Products"
@@ -138,13 +141,30 @@ class Product(models.Model):
         return new_price
 
 class ProductImages(models.Model):
-    image = models.ImageField(upload_to="product-images", default="product.jpg")
+    image = models.ImageField(upload_to="product-images", default="product.jpg", null=True,)
     date = models.DateTimeField(auto_now_add=True)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, related_name="p_images", on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name_plural = "Product Images"
 
+class WeightSize(models.Model):
+    old_price = models.DecimalField(
+        max_digits=999999999999, decimal_places=2, default="199.99"
+    )
+    price = models.DecimalField(
+        max_digits=999999999999, decimal_places=2, default="99.99"
+    )
+    weightsize = models.CharField(null=True, max_length=100)
+    product = models.ForeignKey(Product, related_name="ws", on_delete=models.SET_NULL, null=True)
+
+    class Meta:
+        verbose_name_plural = "Weight/Size"
+
+    def get_percentage(self):
+        new_price = ((self.old_price - self.price) / self.old_price) * 100
+        return new_price
+    
 class CartOrder(models.Model):
     order_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)

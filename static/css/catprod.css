@@ -1,0 +1,12 @@
+.main {
+    width: 100%;
+}
+
+.main .row {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.main .row .col .card .prod-img {
+    width: 230px;
+    height: 230px;
+}

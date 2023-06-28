@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/proddet.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/catprod.css' %}">
+
+<div class="cont">
+    <div class="prodsing">
+    <div class="image">
+        <div class="bigimgs">
+            <div class="main-img">
+                <img src="{{ p.image.url }}" height="450px" width="450px" class="mainsimg">
+            </div>
+            {% for p in p_images %}
+            <div class="main-img">
+                <img src="{{ p.image.url }}" height="450px" width="450px" class="mainsimg">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="smallimgs">
+            <div class="thumb-img">
+                <img class="demo" src="{{ p.image.url }}" height="100px" width="100px" onclick="currentSlide(-1)">
+            </div>
+            {% for p in p_images %}
+            <div class="thumb-img">
+                <img class="demo" src="{{ p.image.url }}" height="100px" width="100px"
+                    onclick="currentSlide({{forloop.counter0}})">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="prod-det">
+        <div class="categ">
+            <a href="#"><p class="cat">{{ p.category }}</p></a>
+        </div>
+        <div class="title">
+            <h2>{{ p.title }}</h2>
+        </div>
+        <div class="rating">
+            <span>★★★★☆ </span><span class="reviews">(30 reviews)</span>
+        </div>
+        <div class="priceper">
+            {# %for ws in ws %#}
+            <p class="price">&#8377;{{ p.price }} <span class="oldprice">&#8377;{{ p.old_price }}</span></p>
+            <span class="per">{{ p.get_percentage | floatformat:0}}% Off</span>
+            {#% endfor %#}
+        </div>
+        <hr>
+        <div class="weight">
+            <span class="weights">
+                {%for ws in ws%}
+                <a href="#"><button class="ws">{{ws.weightsize}}</button></a>
+                {%endfor%}
+            </span>
+        </div>
+        <div class="quantity">
+            <input type="button" value="-" class="qtyminus" id="qtyminus">
+            <input type="number" class="qty" id="qty" value="1" min="1" max="10">
+            <input type="button" value="+" class="qtyplus" id="qtyplus">
+        </div>
+        <div class="prodadd">
+            <span class="addbtns">
+                <a href="#"><button class="addcart"><i class="fa-solid fa-shopping-cart"></i> Add To Cart</button></a>
+                <a href="#"><button class="addwish"><i class="fa-regular fa-heart"></i></button></a>
+                <a href="#"><button class="comp"><i class="fa-solid fa-code-compare"></i></button></a>
+            </span>
+        </div>
+        <hr>
+    </div>
+</div>
+<div class="prodmore">
+    <div class="main">
+        <div class="navs">
+            <ul class="produl">
+            <li class="proditem" id="desc" onclick="showcont1()">Description</li>
+            <li class="proditem" id="spec" onclick="showcont2()">Specifications</li>
+            <li class="proditem" id="rev" onclick="showcont3()">Reviews</li>
+            <li class="proditem" id="vend" onclick="showcont4()">Vendor Info</li>
+            </ul>
+            <div class="content">
+                <div id="desccont">{{ p.description | safe }}</div>
+                <div id="speccont">{{ p.specifications | safe }}</div>
+                <div id="revcont">HELLO</div>
+                <div id="vendcont">
+                    <div class="vendor">
+                        <h3 class="vendors"><a href="{% url 'ecomapp:vendprod' p.vendor.vid %}">{{ p.vendor.title }}</a></h3>
+                <div class="rating">
+                    <span>★★★★☆ </span><span class="reviews">(30 reviews)</span>
+                </div>
+                <div class="addcont">
+                    <p><i class="fa-solid fa-location-dot"></i><span>&nbsp;&nbsp;{{ p.vendor.address }}</span></p>
+                    <p><i class="fa-solid fa-phone"></i><span>&nbsp;&nbsp;{{ p.vendor.contact }}</span></p>
+                </div>
+                <div class="venddet">
+                    <div class="rate">
+                        <p class="head">Rating</p>
+                        <p class="per">92%</p>
+                    </div>
+                    <div class="shiptime">
+                        <p class="head">Shipping On Time</p>
+                        <p class="per">{{ p.vendor.shipping_on_time }}%</p>
+                    </div>
+                    <div class="chattime">
+                        <p class="head">Chat Response Time</p>
+                        <p class="per">{{ p.vendor.chat_resp_time }}%</p>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="aside">
+        <div class="box">
+        <div class="delivery">
+            <h3 class="deliver">Delivery</h3>
+            <i class="fa-solid fa-location-dot"></i><span>&nbsp;&nbsp;{{ address.address }}</span>
+            <p class="veraddchange">
+                {% if address.status == True %}
+                <span class="ver"><i class="fa-regular fa-circle-check"></i>&nbsp;Verified Address</span>
+                {% else %}
+                <span class="unver"><i class="fa-regular fa-circle-xmark"></i>&nbsp;Unverified Address</span>
+                {% endif %}
+                <span class="change"><a href="javascript:void(0)">Change Address</a></span>
+            </p>
+            <hr>
+        </div>
+        <div class="retwar">
+            <h3 class="retuwarr">Return & Warranty</h3>
+            <p><i class="fa-solid fa-arrow-rotate-left"></i><span>&nbsp;&nbsp;{{ p.vendor.days_return }} Days Return</span></p>
+            <p><i class="bi bi-award"></i><span>&nbsp;&nbsp;{{ p.vendor.warranty_period }} Warranty</span></p>
+            <p><i class="bi bi-shield-check"></i><span>&nbsp;&nbsp;{{ p.vendor.authentic_rating }}% Authentic</span></p>
+        </div>
+        </div>
+        <div class="box box2">
+            <div class="vendor">
+                <h3 class="vend">Vendor</h3>
+                <h3 class="vendors"><a href="{% url 'ecomapp:vendprod' p.vendor.vid %}">{{ p.vendor.title }}</a></h3>
+        <div class="rating">
+            <span>★★★★☆ </span><span class="reviews">(30 reviews)</span>
+        </div>
+        <div class="addcont">
+            <p><i class="fa-solid fa-location-dot"></i><span>&nbsp;&nbsp;{{ p.vendor.address }}</span></p>
+            <p><i class="fa-solid fa-phone"></i><span>&nbsp;&nbsp;{{ p.vendor.contact }}</span></p>
+        </div>
+        <div class="venddet">
+            <div class="rate">
+                <p class="head">Rating</p>
+                <p class="per">92%</p>
+            </div>
+            <div class="shiptime">
+                <p class="head">Shipping On Time</p>
+                <p class="per">{{ p.vendor.shipping_on_time }}%</p>
+            </div>
+            <div class="chattime">
+                <p class="head">Chat Response Time</p>
+                <p class="per">{{ p.vendor.chat_resp_time }}%</p>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% if rel_prods %}
+<div class="rel_prods">
+    <h2 class="relprod">Related Products</h2>
+<div class="main">
+    <div class="row">
+        {% for p in rel_prods %}
+        <div class="col">
+            <div class="card">
+                <div class="percentage">-{{ p.get_percentage|floatformat:0 }}%</div>
+                <div class="prod-img">
+                    <div class="icons">
+                        <a href="#"><i class="fa-solid fa-code-compare"></i></a>
+                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                        <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    </div>
+                    <a href="#">
+                        <img src="{{ p.image.url }}" alt="">
+                    </a>
+                </div>
+                <div class="prod-det">
+                    <a href="#"></a>
+                    <p class="categ">{{ p.category }}</p><a href="#"></a>
+                    <h2 class="title"><a href="#">{{ p.title }}</a></h2>
+                    <p class="sold-by">Sold by <a href="#"><span>{{ p.vendor }}</span></a></p>
+                    <div class="prod-det-bot">
+                        <div class="price">&#8377;{{ p.price }}<small>&#8377;{{ p.old_price }}</small></div>
+                        <div class="prod-add">
+                            <a href="#" class="add-cart">
+                                <i class="fa-solid fa-shopping-cart"></i>
+                                <span>Add</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endif %}
+</div>
+<script src="{% static 'js/proddet.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+      $('#speccont tbody tr td:contains("\u00A0")').hide();
+    });
+  </script>
+{% endblock content %}

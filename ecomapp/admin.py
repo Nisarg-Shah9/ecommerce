@@ -1,18 +1,29 @@
 from django.contrib import admin
 from ecomapp.models import *
+from django.conf import settings
 
 class ProductImagesAdmin(admin.TabularInline):
     model = ProductImages
+    
+class WeightSizeAdmin(admin.TabularInline):
+    model = WeightSize
 
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [ProductImagesAdmin]
-    list_display = ['user', 'title','category', 'vendor', 'product_image', 'price', 'featured', 'product_status']
-
+    inlines = [ProductImagesAdmin, WeightSizeAdmin]
+    list_display = ['user', 'title','category', 'vendor', 'product_image', 'price', 'featured', 'product_status', 'pid']
+    class Media:
+        js = (
+            settings.STATIC_URL + 'js/tinymce.js',
+        )
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'category_image']
 
 class VendorAdmin(admin.ModelAdmin):
     list_display = ['title', 'vendor_image']
+    class Media:
+        js = (
+            settings.STATIC_URL + 'js/tinymce.js',
+        )
 
 class CartOrderAdmin(admin.ModelAdmin):
     list_display = ['user', 'price', 'paid_status', 'order_date', 'product_status']

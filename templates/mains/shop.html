@@ -21,17 +21,16 @@
                         <div class="icons">
                             <a href="#"><i class="fa-solid fa-code-compare"></i></a>
                             <a href="#"><i class="fa-solid fa-heart"></i></a>
-                            <a href="#"><i class="fa-solid fa-eye"></i></a>
+                            <a href="{% url 'ecomapp:proddet' p.pid%}"><i class="fa-solid fa-eye"></i></a>
                         </div>
-                        <a href="#">
+                        <a href="{% url 'ecomapp:proddet' p.pid%}">
                             <img src="{{ p.image.url }}" alt="">
                         </a>
                     </div>
                     <div class="prod-det">
-                        <a href="#"></a>
-                        <p class="categ">{{ p.category }}</p><a href="#"></a>
-                        <h2 class="title"><a href="#">{{ p.title }}</a></h2>
-                        <p class="sold-by">Sold by <a href="#"><span>{{ p.vendor }}</span></a></p>
+                        <a href="{% url 'ecomapp:catprod' p.category.cid %}"><p class="categ">{{ p.category }}</p></a>
+                        <h2 class="title"><a href="{% url 'ecomapp:proddet' p.pid%}">{{ p.title }}</a></h2>
+                        <p class="sold-by">Sold by <a href="{% url 'ecomapp:vendprod' p.vendor.vid %}"><span>{{ p.vendor }}</span></a></p>
                         <div class="prod-det-bot">
                             <div class="price">&#8377;{{ p.price }}<small>&#8377;{{ p.old_price }}</small></div>
                             <div class="prod-add">

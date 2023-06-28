@@ -16,20 +16,20 @@
             <div class="col">
                 <div class="card">
                     <div class="vend-img">
-                        <a href="#">
+                        <a href="{% url 'ecomapp:vendprod' v.vid %}">
                             <img src="{{ v.image.url }}" alt="">
                         </a>
                     </div>
                     <div class="vend-det">
-                        <a href="#"></a>
+                        <a href="{% url 'ecomapp:vendprod' v.vid %}"></a>
                         <p class="prods">Since {{ v.date|date:"Y" }}</p>
                         <h2 class="title"><a href="#">{{ v.title }}</a></h2>
                         <p class="prods">Address: {{ v.address }}</p>
                         <p class="prods">Call Us: {{ v.contact }}</p>
                         <div class="visit">
-                            <a href="#" class="visstore">
-                                <i class="fa-solid fa-plus"></i>
+                            <a href="{% url 'ecomapp:vendprod' v.vid %}" class="visstore">
                                 <span>Visit Store</span>
+                                <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>

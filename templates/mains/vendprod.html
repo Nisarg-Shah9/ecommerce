@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/vendprod.css' %}">
+
+<div class="cont">
+<div class="upper">
+    <div class="cover-img">
+        <img src="{{ vendor.cover_image.url }}" alt="" class="coverimg">
+        <div class="prof-img">          
+            <img src="{{ vendor.image.url }}" alt="">
+        </div>
+        <div class="vend-det">
+            <p class="date">Since {{ vendor.date | date:"Y" }}</p>
+            <h2 class="title">{{ vendor.title }}</h2>
+            <div class="adddesccont">
+                <div class="desc">
+                <p class="dec">{{ vendor.description | truncatechars:180}}</p>
+                </div>
+                <div class="addcont">
+                <p class="address">Address: {{ vendor.address }}</p>
+                <p class="contact">Call Us: {{ vendor.contact }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="main">
+        <h2 class="prodcount">{{ products.count }} Product{{ products.count | pluralize }}</h2>
+        <div class="row">
+            {% for p in products %}
+            <div class="col">
+                <div class="card">
+                    <div class="percentage">-{{ p.get_percentage | floatformat:0 }}%</div>
+                    <div class="prod-img">
+                        <div class="icons">
+                            <a href="#"><i class="fa-solid fa-code-compare"></i></a>
+                            <a href="#"><i class="fa-solid fa-heart"></i></a>
+                            <a href="{% url 'ecomapp:proddet' p.pid %}"><i class="fa-solid fa-eye"></i></a>
+                        </div>
+                        <a href="{% url 'ecomapp:proddet' p.pid %}">
+                            <img src="{{ p.image.url }}" alt="">
+                        </a>
+                    </div>
+                    <div class="prod-det">
+                        <a href="#"></a>
+                        <a href="{% url 'ecomapp:catprod' p.category.cid %}"><p class="categ">{{ p.category }}</p></a>
+                        <h2 class="title"><a href="{% url 'ecomapp:proddet' p.pid %}">{{ p.title }}</a></h2>
+                        <p class="sold-by">Sold by <a href="{% url 'ecomapp:vendprod' p.vendor.vid %}"><span>{{ p.vendor }}</span></a></p>
+                        <p class="categ desc">{{ p.description | truncatechars:180 }}</p>
+                        <div class="prod-det-bot">
+                            <div class="price">&#8377;{{ p.price }} <small>&#8377;{{ p.old_price }}</small></div>
+                            <div class="prod-add">
+                                <a href="#" class="add-cart">
+                                    <i class="fa-solid fa-shopping-cart"></i>
+                                    <span>Add To Cart</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
